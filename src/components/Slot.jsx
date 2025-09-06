@@ -118,39 +118,46 @@ const Slot = () => {
   };
 
   return (
-    <Box className="bg-white p-6 max-w-4xl mx-auto">
-      <Grid container spacing={4}>
+    <Box className="bg-white p-4 md:p-6 max-w-4xl mx-auto">
+      <Grid container spacing={{ xs: 2, md: 4 }}>
         {/* Calendar Section */}
         <Grid item xs={12} md={8}>
-          <Paper elevation={0} className="p-6">
+          <Paper elevation={0} className="p-4 md:p-6">
             {/* Calendar Header */}
-            <Box className="flex items-center justify-between mb-6">
+            <Box className="flex items-center justify-between mb-4 md:mb-6">
               <IconButton 
                 size="small"
                 className="text-gray-600 hover:bg-gray-100"
                 onClick={handlePreviousMonth}
+                sx={{ p: { xs: 0.5, md: 1 } }}
               >
-                <ChevronLeft />
+                <ChevronLeft fontSize="small" />
               </IconButton>
-              <Typography variant="h6" className="font-medium text-gray-800">
+              <Typography 
+                variant="h6" 
+                className="font-medium text-gray-800"
+                sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}
+              >
                 {formatMonthYear(currentDate)}
               </Typography>
               <IconButton 
                 size="small"
                 className="text-gray-600 hover:bg-gray-100"
                 onClick={handleNextMonth}
+                sx={{ p: { xs: 0.5, md: 1 } }}
               >
-                <ChevronRight />
+                <ChevronRight fontSize="small" />
               </IconButton>
             </Box>
 
             {/* Days of Week */}
-            <Box className="grid grid-cols-7 gap-1 mb-4">
+            <Box className="grid grid-cols-7 gap-1 mb-3 md:mb-4">
               {weekDays.map((day) => (
                 <Typography 
                   key={day}
                   variant="body2" 
                   className="text-center text-gray-500 font-medium py-2"
+                  sx={{ fontSize: { xs: '0.75rem', md: '0.875rem' } }}
                 >
                   {day}
                 </Typography>
@@ -172,7 +179,7 @@ const Slot = () => {
                     <>
                       <Box
                         className={`
-                          w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium
+                          rounded-full flex items-center justify-center font-medium
                           ${selectedDate === day 
                             ? 'bg-blue-600 text-white' 
                             : isDateSelectable(day)
@@ -180,6 +187,11 @@ const Slot = () => {
                               : 'text-gray-400'
                           }
                         `}
+                        sx={{
+                          width: { xs: '32px', md: '36px' },
+                          height: { xs: '32px', md: '36px' },
+                          fontSize: { xs: '0.875rem', md: '1rem' }
+                        }}
                       >
                         {day}
                       </Box>
@@ -197,25 +209,34 @@ const Slot = () => {
 
         {/* Time Slots Section */}
         <Grid item xs={12} md={4}>
-          <Paper elevation={0} className="p-6 h-full">
+          <Paper elevation={0} className="p-4 md:p-6 h-full">
             {/* Time Header */}
-            <Typography variant="h6" className="font-medium text-gray-800 mb-6">
+            <Typography 
+              variant="h6" 
+              className="font-medium text-gray-800 mb-4 md:mb-6"
+              sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }}
+            >
               {selectedDate ? formatSelectedDate(currentDate, selectedDate) : 'Select a date'}
             </Typography>
 
             {/* Time Slots */}
-            <Box className="space-y-2 max-h-96 overflow-y-auto pr-2">
+            <Box className="space-y-2 max-h-80 md:max-h-96 overflow-y-auto pr-1 md:pr-2">
               {timeSlots.map((time) => (
-                <Box key={time} className="flex items-center gap-2">
+                <Box key={time} className="flex items-center gap-1 md:gap-2">
                   <Button
                     variant={selectedTime === time ? "contained" : "outlined"}
                     className={`
-                      flex-1 justify-start px-4 py-3 rounded-lg text-sm font-medium
+                      flex-1 justify-start rounded-lg font-medium
                       ${selectedTime === time 
                         ? 'bg-gray-700 text-white hover:bg-gray-800' 
                         : 'border-blue-200 text-blue-600 hover:bg-blue-50'
                       }
                     `}
+                    sx={{
+                      px: { xs: 2, md: 4 },
+                      py: { xs: 1.5, md: 3 },
+                      fontSize: { xs: '0.75rem', md: '0.875rem' }
+                    }}
                     onClick={() => handleTimeSelect(time)}
                   >
                     {time}
@@ -223,7 +244,12 @@ const Slot = () => {
                   {selectedTime === time && (
                     <Button
                       variant="contained"
-                      className="bg-blue-600 text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-blue-700"
+                      className="bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700"
+                      sx={{
+                        px: { xs: 3, md: 6 },
+                        py: { xs: 1.5, md: 3 },
+                        fontSize: { xs: '0.75rem', md: '0.875rem' }
+                      }}
                     >
                       Next
                     </Button>
