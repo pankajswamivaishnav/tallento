@@ -15,7 +15,6 @@ import AdbIcon from '@mui/icons-material/Adb';
 import userImage from '../static/images/user.jpg'
 import logo from '../static/images/logo.png'
 
-// const pages = ['Job Category', 'Find Jobs', 'Notifications'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Header() {
@@ -38,11 +37,13 @@ function Header() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{
+      background: 'linear-gradient(90deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%)'
+    }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src={logo} alt="logo" className='w-10 h-10' />
-          <Box className='flex flex-col'>
+          <img src={logo} alt="logo" className='w-10 h-10 mr-2' />
+          
           <Typography
             variant="h6"
             noWrap
@@ -52,7 +53,7 @@ function Header() {
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
-              fontWeight: 700,
+              fontWeight: 800,
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
@@ -61,7 +62,6 @@ function Header() {
             Tallento.ai 
           </Typography>
           <small>Where Ai Meets Ambition</small>
-          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -89,14 +89,17 @@ function Header() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {/* {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{page}</Typography>
-                </MenuItem>
-              ))} */}
+              
                <MenuItem key='job_category' onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: 'center' }}><i class="fa-solid fa-briefcase"></i> Job Category</Typography>
                 </MenuItem>
+               <MenuItem key='job_category' onClick={handleCloseNavMenu}>
+                  <Typography sx={{ textAlign: 'center' }}><i class="fa-solid fa-magnifying-glass"></i> Find Jobs</Typography>
+                </MenuItem>
+               <MenuItem key='job_category' onClick={handleCloseNavMenu}>
+                  <Typography sx={{ textAlign: 'center' }}><i class="fa-solid fa-bell"></i>Notification</Typography>
+                </MenuItem>
+
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -143,17 +146,18 @@ function Header() {
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                <div className='flex flex-col items-center gap-2'>
-               <i class="fa-solid fa-bell"></i> <small>Notifications</small>
+               <i class="fa-solid fa-bell"></i>
+                <small>Notifications</small>
                </div>
               </Button>
           </Box>
-          <Box sx={{ flexGrow: 0 }} className='flex flex-col m-2'>
+          <Box sx={{ flexGrow: 0 }} className='flex flex-col m-2' >
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="user image" src={userImage} />
               </IconButton>
             </Tooltip>
-            <Button variant="contained" color="primary bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" className='py-2'>
+            <Button variant="contained" color="primary bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" sx={{marginTop: '10px'}}>
                 <i class="fa-solid fa-plus"></i> <small>Post a Job</small>
             </Button>
             <Menu
