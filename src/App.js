@@ -1,11 +1,12 @@
 import React from 'react'
 import Header from './components/Header'
+import Slot from './components/Slot'
 
 const App = () => {
   return (
     <div >
       <Header/>
-      Hello Tallento.ai
+      <Slot />
     </div>
   )
 }
