@@ -44,24 +44,36 @@ function Header() {
         <Toolbar disableGutters>
           <img src={logo} alt="logo" className='w-10 h-10 mr-2' />
           
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 800,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Tallento.ai 
-          </Typography>
-          <small>Where Ai Meets Ambition</small>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'column', mr: 2 }}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                fontFamily: 'monospace',
+                fontWeight: 800,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+                lineHeight: 1,
+              }}
+            >
+              Tallento.ai 
+            </Typography>
+            <Typography
+              variant="caption"
+              sx={{
+                color: 'inherit',
+                opacity: 0.8,
+                fontSize: '0.7rem',
+                fontStyle: 'italic',
+                lineHeight: 1,
+              }}
+            >
+              Where AI meets ambition
+            </Typography>
+          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -103,24 +115,36 @@ function Header() {
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Tallento.ai
-          </Typography>
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, flexDirection: 'column', flexGrow: 1, mr: 2 }}>
+            <Typography
+              variant="h5"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+                lineHeight: 1,
+              }}
+            >
+              Tallento.ai
+            </Typography>
+            <Typography
+              variant="caption"
+              sx={{
+                color: 'inherit',
+                opacity: 0.8,
+                fontSize: '0.6rem',
+                fontStyle: 'italic',
+                lineHeight: 1,
+              }}
+            >
+              Where AI meets ambition
+            </Typography>
+          </Box>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
           <Button
                 key='find_jobs'
